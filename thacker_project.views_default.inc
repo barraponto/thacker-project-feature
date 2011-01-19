@@ -378,6 +378,27 @@ function thacker_project_views_default_views() {
       ),
       'relationship' => 'none',
     ),
+    'tid' => array(
+      'operator' => 'or',
+      'value' => array(
+        '1' => '1',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'type' => 'select',
+      'limit' => TRUE,
+      'vid' => '2',
+      'id' => 'tid',
+      'table' => 'term_node',
+      'field' => 'tid',
+      'hierarchy' => 0,
+      'relationship' => 'none',
+      'reduce_duplicates' => 0,
+    ),
   ));
   $handler->override_option('access', array(
     'type' => 'none',
@@ -430,7 +451,6 @@ function thacker_project_views_default_views() {
     ),
     'skip_blank' => 0,
   ));
-  $handler->override_option('exposed_block', TRUE);
   $handler = $view->new_display('block', 'Block', 'block_1');
   $handler->override_option('block_description', '');
   $handler->override_option('block_caching', -1);
@@ -521,12 +541,14 @@ function thacker_project_views_default_views() {
     ),
   ));
   $handler->override_option('sorts', array(
-    'created' => array(
-      'id' => 'created',
-      'table' => 'og_uid',
-      'field' => 'created',
-      'order' => 'DESC',
-      'granularity' => 'second',
+    'random' => array(
+      'order' => 'ASC',
+      'id' => 'random',
+      'table' => 'views',
+      'field' => 'random',
+      'override' => array(
+        'button' => 'Override',
+      ),
       'relationship' => 'none',
     ),
   ));
@@ -649,7 +671,7 @@ function thacker_project_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
-  $handler->override_option('title', 'Recent members');
+  $handler->override_option('title', 'Project members');
   $handler->override_option('empty_format', '1');
   $handler->override_option('use_ajax', TRUE);
   $handler->override_option('use_pager', '1');
@@ -691,7 +713,7 @@ function thacker_project_views_default_views() {
     ),
     'skip_blank' => 0,
   ));
-  $handler = $view->new_display('block', 'Block Admins', 'block');
+  $handler = $view->new_display('block', 'Project Author', 'block');
   $handler->override_option('fields', array(
     'picture' => array(
       'label' => '',
@@ -834,7 +856,7 @@ function thacker_project_views_default_views() {
       ),
     ),
   ));
-  $handler->override_option('title', 'Group admins');
+  $handler->override_option('title', 'Project Author');
   $handler->override_option('items_per_page', 1);
   $handler->override_option('row_options', array(
     'semantic_html' => array(
@@ -853,9 +875,9 @@ function thacker_project_views_default_views() {
     ),
     'skip_blank' => 0,
   ));
-  $handler->override_option('block_description', 'Group admins');
+  $handler->override_option('block_description', 'Project Author');
   $handler->override_option('block_caching', -1);
-  $handler = $view->new_display('block', 'Block Admins, Members', 'block_1');
+  $handler = $view->new_display('block', 'Project Members', 'block_1');
   $handler->override_option('fields', array(
     'picture' => array(
       'label' => '',
@@ -952,7 +974,7 @@ function thacker_project_views_default_views() {
     ),
     'skip_blank' => 0,
   ));
-  $handler->override_option('block_description', 'Group members');
+  $handler->override_option('block_description', 'Project Members');
   $handler->override_option('block_caching', -1);
 
   $views[$view->name] = $view;
@@ -1245,6 +1267,242 @@ function thacker_project_views_default_views() {
     'weight' => 0,
     'name' => 'navigation',
   ));
+
+  $views[$view->name] = $view;
+
+  // Exported view: dt_project_promo
+  $view = new view;
+  $view->name = 'dt_project_promo';
+  $view->description = 'Promotional and join block for Thacker.com.br Projects';
+  $view->tag = 'dt_project';
+  $view->view_php = '';
+  $view->base_table = 'node';
+  $view->is_cacheable = FALSE;
+  $view->api_version = 2;
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+  $handler = $view->new_display('default', 'Defaults', 'default');
+  $handler->override_option('fields', array(
+    'field_promotional_fid' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'promotional_banner_default',
+      'multiple' => array(
+        'group' => TRUE,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => FALSE,
+      ),
+      'exclude' => 0,
+      'id' => 'field_promotional_fid',
+      'table' => 'node_data_field_promotional',
+      'field' => 'field_promotional_fid',
+      'relationship' => 'none',
+    ),
+    'subscribe' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'exclude' => 0,
+      'id' => 'subscribe',
+      'table' => 'og',
+      'field' => 'subscribe',
+      'override' => array(
+        'button' => 'Override',
+      ),
+      'relationship' => 'none',
+    ),
+    'field_event_date_value' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'medium',
+      'multiple' => array(
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_to' => '',
+        'group' => '',
+      ),
+      'repeat' => array(
+        'show_repeat_rule' => '',
+      ),
+      'fromto' => array(
+        'fromto' => 'both',
+      ),
+      'exclude' => 0,
+      'id' => 'field_event_date_value',
+      'table' => 'node_data_field_event_date',
+      'field' => 'field_event_date_value',
+      'relationship' => 'none',
+      'override' => array(
+        'button' => 'Override',
+      ),
+    ),
+  ));
+  $handler->override_option('arguments', array(
+    'nid' => array(
+      'default_action' => 'default',
+      'style_plugin' => 'default_summary',
+      'style_options' => array(),
+      'wildcard' => 'all',
+      'wildcard_substitution' => 'All',
+      'title' => '',
+      'breadcrumb' => '',
+      'default_argument_type' => 'node',
+      'default_argument' => '',
+      'validate_type' => 'node',
+      'validate_fail' => 'not found',
+      'break_phrase' => 0,
+      'not' => 0,
+      'id' => 'nid',
+      'table' => 'node',
+      'field' => 'nid',
+      'validate_user_argument_type' => 'uid',
+      'validate_user_roles' => array(
+        '2' => 0,
+        '3' => 0,
+      ),
+      'relationship' => 'none',
+      'default_options_div_prefix' => '',
+      'default_argument_fixed' => '',
+      'default_argument_user' => 0,
+      'default_argument_php' => '',
+      'validate_argument_node_type' => array(
+        'dt_project' => 'dt_project',
+        'dt_event' => 0,
+        'page' => 0,
+        'profile' => 0,
+      ),
+      'validate_argument_node_access' => 0,
+      'validate_argument_nid_type' => 'nid',
+      'validate_argument_vocabulary' => array(
+        '1' => 0,
+        '2' => 0,
+      ),
+      'validate_argument_type' => 'tid',
+      'validate_argument_transform' => 0,
+      'validate_user_restrict_roles' => 0,
+      'validate_argument_is_member' => 'OG_VIEWS_DO_NOT_VALIDATE_MEMBERSHIP',
+      'validate_argument_group_node_type' => array(
+        'dt_project' => 0,
+      ),
+      'validate_argument_signup_status' => 'any',
+      'validate_argument_signup_node_access' => 0,
+      'validate_argument_php' => '',
+      'override' => array(
+        'button' => 'Override',
+      ),
+    ),
+  ));
+  $handler->override_option('access', array(
+    'type' => 'none',
+  ));
+  $handler->override_option('cache', array(
+    'type' => 'none',
+  ));
+  $handler->override_option('items_per_page', 1);
+  $handler->override_option('style_plugin', 'semanticviews_default');
+  $handler->override_option('style_options', array(
+    'grouping' => '',
+    'group' => array(
+      'element_type' => 'h3',
+      'class' => 'title',
+    ),
+    'list' => array(
+      'element_type' => '',
+      'class' => '',
+    ),
+    'row' => array(
+      'element_type' => 'div',
+      'class' => '',
+      'last_every_nth' => '0',
+      'first_class' => 'first',
+      'last_class' => 'last',
+      'striping_classes' => 'odd even',
+    ),
+  ));
+  $handler->override_option('row_plugin', 'semanticviews_fields');
+  $handler->override_option('row_options', array(
+    'semantic_html' => array(
+      'field_promotional_fid' => array(
+        'element_type' => 'div',
+        'class' => 'promotional_banner',
+      ),
+      'subscribe' => array(
+        'element_type' => 'div',
+        'class' => 'join',
+      ),
+      'field_event_date_value' => array(
+        'element_type' => 'div',
+        'class' => 'date',
+      ),
+    ),
+    'skip_blank' => 0,
+  ));
+  $handler = $view->new_display('block', 'Block', 'block_1');
+  $handler->override_option('block_description', '');
+  $handler->override_option('block_caching', -1);
 
   $views[$view->name] = $view;
 
