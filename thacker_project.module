@@ -1,3 +1,25 @@
 <?php
 
 include_once('thacker_project.features.inc');
+
+function thacker_project_block($op = 'list', $delta = 0, $edit = array()) {
+  if ($op == 'list') {
+    $blocks[0] = array(
+      'info' => t('New Project'), 
+      'weight' => 0, 
+      'status' => 0, 
+    );
+    return $blocks;
+  }
+  else if ($op == 'view') {
+    switch ($delta) {
+    case 0:
+      // Your module will need to define this function to render the block.
+      $block = array(
+        'subject' => '', 
+        'content' => l(t('Create a new project'), 'node/add/dt_project'),
+      );
+      return $block;
+    }
+  }
+}
