@@ -162,7 +162,7 @@ function thacker_project_views_default_views() {
     ),
     'row' => array(
       'element_type' => 'div',
-      'class' => '',
+      'class' => 'highlight',
       'last_every_nth' => '0',
       'first_class' => 'first',
       'last_class' => 'last',
@@ -1188,10 +1188,16 @@ function thacker_project_views_default_views() {
       'operator' => 'or',
       'value' => array(),
       'group' => '0',
-      'exposed' => FALSE,
+      'exposed' => TRUE,
       'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
+        'use_operator' => 0,
+        'operator' => 'tid_1_op',
+        'identifier' => 'tid_1',
+        'label' => 'Status',
+        'optional' => 1,
+        'single' => 1,
+        'remember' => 0,
+        'reduce' => 0,
       ),
       'type' => 'select',
       'limit' => TRUE,
@@ -1202,6 +1208,9 @@ function thacker_project_views_default_views() {
       'hierarchy' => 0,
       'relationship' => 'none',
       'reduce_duplicates' => 0,
+      'override' => array(
+        'button' => 'Override',
+      ),
     ),
   ));
   $handler->override_option('access', array(
@@ -1225,7 +1234,7 @@ function thacker_project_views_default_views() {
     ),
     'row' => array(
       'element_type' => 'div',
-      'class' => '',
+      'class' => 'project',
       'last_every_nth' => '0',
       'first_class' => 'first',
       'last_class' => 'last',
@@ -1237,7 +1246,7 @@ function thacker_project_views_default_views() {
     'semantic_html' => array(
       'field_promotional_fid' => array(
         'element_type' => 'div',
-        'class' => 'promotional_page',
+        'class' => 'promotional',
       ),
       'title' => array(
         'element_type' => 'div',
