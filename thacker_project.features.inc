@@ -70,7 +70,7 @@ function thacker_project_imagecache_default_presets() {
 function thacker_project_node_info() {
   $items = array(
     'dt_project' => array(
-      'name' => t('Data Transparency Project'),
+      'name' => t('Project'),
       'module' => 'features',
       'description' => t('A Project in data transparency'),
       'has_title' => '1',
