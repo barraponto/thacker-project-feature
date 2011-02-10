@@ -17,7 +17,7 @@ function thacker_project_block($op = 'list', $delta = 0, $edit = array()) {
       // Your module will need to define this function to render the block.
       $block = array(
         'subject' => '', 
-        'content' => l(t('Create a new project'), 'node/add/dt_project'),
+        'content' => l(t('Create a new project'), 'node/add/dt-project'),
       );
       return $block;
     }
