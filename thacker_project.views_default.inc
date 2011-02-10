@@ -856,8 +856,15 @@ function thacker_project_views_default_views() {
       ),
     ),
   ));
+  $handler->override_option('cache', array(
+    'type' => 'time',
+    'results_lifespan' => '3600',
+    'output_lifespan' => '21600',
+  ));
   $handler->override_option('title', 'Project Author');
+  $handler->override_option('use_ajax', FALSE);
   $handler->override_option('items_per_page', 1);
+  $handler->override_option('use_pager', '0');
   $handler->override_option('row_options', array(
     'semantic_html' => array(
       'picture' => array(
