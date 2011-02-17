@@ -6,6 +6,6 @@ function thacker_project() {
   $variables = thacker_project_strongarm();
 
   foreach ($variables as $variable) {
-    variable_set($variable->name, $variable->value);
+    variable_set($variable->name, serialize($variable->value));
   }
 }
