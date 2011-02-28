@@ -1,11 +1,11 @@
 <?php
 
-function thacker_project() {
+function thacker_project_install() {
   module_load_include('inc', 'thacker_project', 'thacker_project.strongarm');
 
   $variables = thacker_project_strongarm();
 
   foreach ($variables as $variable) {
-    variable_set($variable->name, serialize($variable->value));
+    variable_set($variable->name, $variable->value);
   }
 }
